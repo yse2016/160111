@@ -3,7 +3,7 @@ import javax.swing.*;
 public class Main {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame(/*"はじめてのGUI"*/);
-		JLabel label = new JLabel("Hello World!!");
+		JLabel label = new JLabel("Aloha!!");
 		//JButton button = new JButton("押してね");
 		frame.getContentPane().setLayout(new FlowLayout());
 		frame.getContentPane().add(label);
