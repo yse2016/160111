@@ -5,6 +5,7 @@ import javax.swing.*;
 public class MainFrameMan{
 	public static void main(String[] args) {
 		FrameMan fm = new FrameMan();
+		fm.FrameMan();
 	}
 }
 
@@ -36,5 +37,8 @@ class FrameMan implements ActionListener{
 
 		//windowを表示する
 		frame.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent e){
+		label.setText("あろは");
 	}
 }
