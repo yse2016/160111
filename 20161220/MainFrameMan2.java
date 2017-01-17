@@ -5,7 +5,6 @@ import javax.swing.*;
 public class MainFrameMan2{
 	public static void main(String[] args) {
 		FrameMan fm = new FrameMan();
-		fm.FrameMan();
 	}
 }
 
@@ -16,7 +15,7 @@ class FrameMan implements ActionListener{
 	JLabel label;
 	JButton button;
 	JTextField textField;
-	public void FrameMan(){
+	public FrameMan(){
 		//windowの設定
 		frame = new JFrame("ふれいむまん");
 		frame.setBounds(100,100,300,300);
