@@ -20,10 +20,15 @@ class Ideaman implements ActionListener{
 	JButton btn;
 	JTextField tF;
 	JTextField tF2;
+	JTextField tF3;
 	JScrollPane scrollPane;
 	JTextArea textArea;
 	String textdata;
 	JFileChooser fc;
+	int l=10000;
+	String[] words = new String[l];
+	int i;
+	int n;
 
 	public Ideaman(){
 		frame = new JFrame("あいでぃあん");
@@ -35,8 +40,9 @@ class Ideaman implements ActionListener{
 		btnOpen = new JButton("おーぷん");
 		btnSave = new JButton("ほぞん");
 		btnWord = new JButton("たんご");
-		tF = new JTextField(8);
-		tF2 = new JTextField(8);
+		tF = new JTextField(17);
+		tF2 = new JTextField(17);
+		tF3 = new JTextField(26);
 		textArea = new JTextArea(10, 30);
 		scrollPane = new JScrollPane(textArea);
 
@@ -53,19 +59,17 @@ class Ideaman implements ActionListener{
 		con.add(panel);
 		panel.add(tF);
 		panel.add(tF2);
+		panel.add(btnWord);
+		panel.add(tF3);
 		panel.add(btnOpen);
 		panel.add(btnSave);
-		panel.add(btnWord);
 		con.add(scrollPane);
 
 		frame.setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent ae){
-		Random rnd = new Random(); 
 		String cmd = ae.getActionCommand();
-		String[] word1 = {"1","2","3","4","5"};
-		String[] word2 = {"6","7","8","9","10"};
 		//textdata = tF.getText();
 		if(cmd.equals("open")){
 			fc= new JFileChooser();
@@ -77,7 +81,7 @@ class Ideaman implements ActionListener{
 
 				textdata = file.getAbsolutePath();
 
-				//tF.setText(textdata);
+				tF3.setText(textdata);
 			}
 			try{
 				File f = new File(textdata);
@@ -104,7 +108,7 @@ class Ideaman implements ActionListener{
 
 				textdata = file.getAbsolutePath();
 
-				//tF.setText(textdata);
+				tF3.setText(textdata);
 			}
 			try{
 				File f = new File(textdata);
@@ -121,10 +125,47 @@ class Ideaman implements ActionListener{
 			}
 		}
 		if(cmd.equals("word")){
-			int wordR = rnd.nextInt(4);
-			int wordR2 = rnd.nextInt(4);
-			tF.setText(word1[wordR]);
-			tF2.setText(word2[wordR2]);
+			Random rnd = new Random();
+			if(n<=1){
+				fc= new JFileChooser();
+				fc.setCurrentDirectory(new File("."));
+				int ret = fc.showSaveDialog(frame);
+				if(ret == JFileChooser.APPROVE_OPTION) {
+			// 選ばれたファイル
+					File file = fc.getSelectedFile();
+
+					textdata = file.getAbsolutePath();
+
+				//tF.setText(textdata);
+				}
+				try{
+					File f = new File(textdata);
+					FileReader fr = new FileReader(f);
+					BufferedReader br = new BufferedReader(fr);
+					String line;
+					StringTokenizer token;
+					while ((line = br.readLine()) != null) {
+						token = new StringTokenizer(line,",");
+
+						while(token.hasMoreTokens()){
+					//System.out.println(token.nextToken());
+						//pw.println(token.nextToken());
+							words[i] = token.nextToken();
+							i++;
+
+						}
+					}
+
+					br.close();
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+				n=2;
+			}
+			int wordR1 = rnd.nextInt(i);
+			int wordR2 = rnd.nextInt(i);
+			tF.setText(words[wordR1]);
+			tF2.setText(words[wordR2]);
 		}
 	}
 }
