@@ -73,7 +73,7 @@ class TextEditorman implements ActionListener{
 				FileReader fr = new FileReader(f);
 				BufferedReader br = new BufferedReader(fr);
 				String line;
-
+					textArea.setText("");
 				while ((line = br.readLine()) != null) {
 					textArea.append(line);
 					textArea.append("\n");
