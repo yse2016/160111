@@ -49,6 +49,8 @@ class Ideaman implements ActionListener{
 		Container con = frame.getContentPane();
 		con.setLayout(new GridLayout(2, 1));
 
+		panel.setBackground(new Color(255,94,25));
+
 		btnOpen.addActionListener(this);
 		btnOpen.setActionCommand("open");
 		btnSave.addActionListener(this);
