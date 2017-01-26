@@ -58,7 +58,7 @@ class Ideaman implements ActionListener{
 		scrollPane = new JScrollPane(textArea);
 
 		Container con = frame.getContentPane();
-		con.setLayout(new GridLayout(5, 0));
+		con.setLayout(new GridLayout(5, 1));
 		//panel1.setLayout(new BorderLayout());
 		//panel2.setLayout(new BorderLayout());
 
