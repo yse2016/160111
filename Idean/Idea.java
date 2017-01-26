@@ -12,8 +12,13 @@ public class Idea{
 
 class Ideaman implements ActionListener{
 	JFrame frame;
-	JPanel panel;
-	JLabel label;
+	JPanel panel1;
+	JPanel panel2;
+	JPanel panel3;
+	JPanel panel4;
+	JLabel label1;
+	JLabel label2;
+	JLabel label3;
 	JButton btnOpen;
 	JButton btnSave;
 	JButton btnWord;
@@ -32,10 +37,13 @@ class Ideaman implements ActionListener{
 
 	public Ideaman(){
 		frame = new JFrame("あいでぃあん");
-		frame.setBounds(400,400,500,500);
+		frame.setBounds(400,100,500,700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setLayout(new FlowLayout());
-		panel = new JPanel();
+		panel1 = new JPanel();
+		panel2 = new JPanel();
+		panel3 = new JPanel();
+		panel4 = new JPanel();
 		//btn = new JButton("くりっくみー");
 		btnOpen = new JButton("おーぷん");
 		btnSave = new JButton("ほぞん");
@@ -43,13 +51,21 @@ class Ideaman implements ActionListener{
 		tF = new JTextField(17);
 		tF2 = new JTextField(17);
 		tF3 = new JTextField(26);
+		label1 = new JLabel("単語1");
+		label2 = new JLabel("単語2");
+		label3 = new JLabel("メモ帳を開く↓");
 		textArea = new JTextArea(10, 30);
 		scrollPane = new JScrollPane(textArea);
 
 		Container con = frame.getContentPane();
-		con.setLayout(new GridLayout(2, 1));
+		con.setLayout(new GridLayout(5, 0));
+		//panel1.setLayout(new BorderLayout());
+		//panel2.setLayout(new BorderLayout());
 
-		panel.setBackground(new Color(255,94,25));
+		panel1.setBackground(new Color(255,94,25));
+		panel2.setBackground(new Color(255,94,25));
+		panel3.setBackground(new Color(30,168,6));
+		panel4.setBackground(new Color(30,168,6));
 
 		btnOpen.addActionListener(this);
 		btnOpen.setActionCommand("open");
@@ -58,13 +74,19 @@ class Ideaman implements ActionListener{
 		btnWord.addActionListener(this);
 		btnWord.setActionCommand("word");
 
-		con.add(panel);
-		panel.add(tF);
-		panel.add(tF2);
-		panel.add(btnWord);
-		panel.add(tF3);
-		panel.add(btnOpen);
-		panel.add(btnSave);
+		con.add(panel1);
+		con.add(panel2);
+		con.add(panel3);
+		con.add(panel4);
+		// panel.add(tF);
+		// panel.add(tF2);
+		panel1.add(label1);
+		panel1.add(label2);
+		panel2.add(btnWord);
+		// panel.add(tF3);
+		panel3.add(label3);
+		panel4.add(btnOpen);
+		panel4.add(btnSave);
 		con.add(scrollPane);
 
 		frame.setVisible(true);
@@ -83,7 +105,7 @@ class Ideaman implements ActionListener{
 
 				textdata = file.getAbsolutePath();
 
-				tF3.setText(textdata);
+				label3.setText(textdata);
 			}
 			try{
 				File f = new File(textdata);
@@ -110,7 +132,7 @@ class Ideaman implements ActionListener{
 
 				textdata = file.getAbsolutePath();
 
-				tF3.setText(textdata);
+				label3.setText(textdata);
 			}
 			try{
 				File f = new File(textdata);
@@ -166,8 +188,8 @@ class Ideaman implements ActionListener{
 			}
 			int wordR1 = rnd.nextInt(i);
 			int wordR2 = rnd.nextInt(i);
-			tF.setText(words[wordR1]);
-			tF2.setText(words[wordR2]);
+			label1.setText(words[wordR1]);
+			label2.setText(words[wordR2]);
 		}
 	}
 }
