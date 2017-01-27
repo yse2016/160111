@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>createjs4</title>
+</head>
+<body>
+	<h1>createjsの練習</h1>
+	<hr>
+
+	<canvas id="myCanvas" width="960" height="540"></canvas>
+
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script>
+
+		window.addEventListener("load",init);
+		function init(){
+
+			var stage = new createjs.Stage("myCanvas");
+
+// ドラッグした場所を保存する変数
+var star = new createjs.Shape();
+var x=1;
+
+star.graphics.beginFill("Orange");
+star.graphics.drawPolyStar(100, 100, 75, 5, 0.6, -90);
+stage.addChild(star);
+
+createjs.Ticker.on("tick", function(){
+	star.x += 50*x;
+	if(star.x>=500){
+		x = -1;
+		//star.y += 200;
+	}else if(star.x<=-25){
+		x = +1;
+		//star.y -= 200;
+
+	}
+	stage.update();
+})
+}
+
+</script>
+</body>
+</html>
