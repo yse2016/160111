@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>createjs2</title>
+</head>
+<body>
+	<h1>createjsの練習</h1>
+	<hr>
+
+	<canvas id="myCanvas" width="960" height="540"></canvas>
+
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script>
+
+		window.addEventListener("load",init);
+		function init(){
+
+			var stage = new createjs.Stage("myCanvas");
+
+			var radius = 100;
+
+// ドラッグした場所を保存する変数
+var dragPointX;
+var dragPointY;
+var star = new createjs.Shape();
+
+star.graphics.beginFill("#FFFF00");
+star.graphics.drawPolyStar(0, 0, 75, 5, 0.6, -90);
+star.x = stage.canvas.width / 2;
+star.y = stage.canvas.height / 2;
+stage.addChild(star);
+
+
+// インタラクティブの設定
+star.addEventListener("mousedown", handleDown);
+star.addEventListener("pressmove", handleMove);
+star.addEventListener("pressup", handleUp);
+
+// starを押したときの処理です
+function handleDown(event) {
+    // ドラッグを開始した座標を覚えておく
+    dragPointX = stage.mouseX - star.x;
+    dragPointY = stage.mouseY - star.y;
+    star.alpha = 0.5;
+}
+
+// starを押した状態で動かしたときの処理です
+function handleMove(event) {
+    // starはマウス座標に追随する
+    // ただしドラッグ開始地点との補正をいれておく
+    star.x = stage.mouseX - dragPointX;
+    star.y = stage.mouseY - dragPointY;
+}
+function handleUp(event) {
+        // ボールを元の透明度に戻す
+        star.alpha = 1.0;
+    }
+    createjs.Ticker.addEventListener("tick", handleTick);
+    function handleTick() {
+        stage.update(); // 画面更新
+    }
+}
+
+</script>
+</body>
+</html>
