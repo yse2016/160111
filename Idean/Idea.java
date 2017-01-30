@@ -164,8 +164,11 @@ class Ideaman implements ActionListener{
 				}
 				try{
 					File f = new File(textdata);
-					FileReader fr = new FileReader(f);
-					BufferedReader br = new BufferedReader(fr);
+					FileInputStream fis = new FileInputStream(f);
+					InputStreamReader isr = new InputStreamReader(fis,"UTF-8");
+					BufferedReader br = new BufferedReader(isr);
+					//FileReader fr = new FileReader(f);
+					//BufferedReader br = new BufferedReader(fr);
 					String line;
 					StringTokenizer token;
 					while ((line = br.readLine()) != null) {
