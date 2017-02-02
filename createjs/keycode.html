@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    document.onkeydown = function(e) {
+    var keyCode = false;
+ 
+    if (e) {
+        event = e;
+    }
+ 
+    if (event) {
+        if (event.keyCode) {
+            keyCode = event.keyCode;
+        } else if (event.which) {
+            keyCode = event.which;
+        }
+    }
+ 
+    alert(keyCode);
+};
+</script>
+</body>
+</html>
