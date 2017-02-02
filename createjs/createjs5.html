@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>createjs5</title>
+</head>
+<body>
+	<h1>createjsの練習</h1>
+	<hr>
+
+	<canvas id="myCanvas" width="960" height="540"></canvas>
+
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+	<script>
+
+		window.addEventListener("load",init);
+		function init(){
+
+			var stage = new createjs.Stage("myCanvas");
+
+			var radius = 100;
+
+// ドラッグした場所を保存する変数
+// var dragPointX;
+// var dragPointY;
+var star = new createjs.Shape();
+
+star.graphics.beginFill("#FFFF00");
+star.graphics.drawPolyStar(0, 0, 75, 5, 0.6, -90);
+stage.addChild(star);
+star.x = stage.canvas.width / 2;
+star.y = stage.canvas.height / 2;
+
+
+// インタラクティブの設定
+star.addEventListener("keydown", handleKeydown);
+
+// starを押したときの処理です
+function handleKeydown(event) {
+    // ドラッグを開始した座標を覚えておく
+    var keyCode = event.keyCode;
+        if (keyCode == 39) { // 右
+          star.x += 1; // 移動
+          star.rotation = 0; // 向きを変更
+        } else if (keyCode == 37) { // 左
+          star.x -= 1;
+          star.rotation = 180;
+        } else if (keyCode == 40) { // 下
+          star.y += 1;
+          star.rotation = 90;
+        } else if (keyCode == 38) { // 上
+          star.y -= 1;
+          star.rotation = -90;
+        }
+      }
+
+
+    createjs.Ticker.addEventListener("tick", handleTick);
+    function handleTick() {
+        stage.update(); // 画面更新
+    }
+}
+
+</script>
+</body>
+</html>
