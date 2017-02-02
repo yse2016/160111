@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>createjs</title>
+</head>
+<body>
+	<h1>createjsの練習</h1>
+	<hr>
+
+	<canvas id="myCanvas" width="1000" height="1000"></canvas>
+
+	<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+
+	<script>
+		window.addEventListener('load',init);
+		function init(){
+
+			var stage = new createjs.Stage("myCanvas");
+
+			var shikaku = new createjs.Shape();
+
+			var x=1;
+			var y=0;
+
+			shikaku.graphics.beginFill("#FF0000");
+
+			shikaku.graphics.drawRect(50,50,100,100);
+	stage.addChild(shikaku);
+
+			createjs.Ticker.on("tick", function(){
+				shikaku.x += 50*x;
+				//shikaku.y += 10*y;
+				if(shikaku.x>=500){
+					x = -1;
+					if(shikaku.y){
+					y = -1;
+					}
+		//shikaku.y += 200;
+	}else if(shikaku.x<=-25){
+		x = +1;
+
+		shikaku.y += 20*y;
+		//shikaku.y = +1;
+		//shikaku.y -= 200;
+
+	}
+
+
+	stage.update();
+})
+		}
+
+	</script>
+
+</body>
+</html>
+
+		if(shikaku.y>=500){
+			y = -1;
+		}else if(shikaku.y<=0){
+			y= +1;
+		}
