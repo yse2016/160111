@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+require 'r-fxxk'
+
+class Kemono < Brainfuck
+  nxt "たのしー！"
+  inc "たーのしー！"
+  prv "すごーい！"
+  dec "すっごーい！"
+  opn "うわー！"
+  cls "わーい！"
+  put "なにこれなにこれ！"
+  get "おもしろーい！"
+end
+
+puts Kemono.new.fuck(ARGF.read)
+
