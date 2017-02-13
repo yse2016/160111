@@ -176,10 +176,11 @@ class Dq2 implements ActionListener{
 
 			if(cmd.equals("covery")){
 				eatk = rnd.nextInt(50)+10;
-				csp = rnd.nextInt(70)+50;
+				csp = rnd.nextInt(30)+50;
 				if(php> 0 && ehp>0) {
 					if (pmp >= csp) {
 						php = php + csp;
+						pmp = pmp - csp;
 					}
 				}else if(php<= 0){
 					ehp = ehp;
