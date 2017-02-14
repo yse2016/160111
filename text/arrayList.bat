@@ -1,3 +1,3 @@
 @echo off
-java arrayList
+java ArrayLists
 pause
