@@ -1,13 +1,13 @@
 import java.util.*;
 
-public class arrayList {
+public class ArrayLists {
 	public static void main(String[] args) {
 		ArrayList list = new ArrayList(); 
 		String str=null;
 		String msg="1.データを末尾に追加する\n2.データを指定した場所に追加する\n3.指定した場所のデータを表示する\n4.指定した場所のデータを削除する\n5.指定した場所のデータを入力したデータと置き換える\n6.データの個数を調べる\n7.リスト内を検索する\n8.リストを表示する\n9.終了する";
 		int it=0;
 
-		for (int i=0;i<=8 ;i++ ) {
+		for (int i=0;i<=9 ;i++ ) {
 			System.out.println(msg);
 			i = new Scanner(System.in).nextInt();
 			switch (i) {
@@ -52,6 +52,12 @@ public class arrayList {
 				break;
 
 				case 7:
+					System.out.println("リスト内を検索する");
+					str = new Scanner(System.in).nextLine();
+					System.out.println(list.contains(str));
+				break;
+
+				case 8:
 					System.out.println("リストを表示します");
 					int ls = list.size();
 					for(int j=0;j<ls;j++){
