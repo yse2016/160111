@@ -40,11 +40,7 @@ public class Aloha{
 						n++;
 					}
 			}
-				for(j=0;j<n;j++){
-					String word = words[j];
-					data = hm.get(word);
-					System.out.println(word+":"+data);	
-				}
 
+				hm.forEach((keyName,valueAddress) -> System.out.println(keyName+":"+valueAddress));
 	}
 }
